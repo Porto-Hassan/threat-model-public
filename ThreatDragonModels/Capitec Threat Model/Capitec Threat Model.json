@@ -3,24 +3,377 @@
   "summary": {
     "title": "Capitec Threat Model",
     "owner": "Mohamed Hassan",
-    "description": "",
+    "description": "Final threat model for Capitec\u2019s online banking system. Includes STRIDE threats, flows, and trust boundaries.",
     "id": 0
   },
   "detail": {
-    "contributors": [],
+    "contributors": [
+      "Mohamed Hassan"
+    ],
     "diagrams": [
       {
         "id": 0,
-        "title": "New STRIDE diagram",
+        "title": "User Authentication and Transaction Flow",
         "diagramType": "STRIDE",
-        "placeholder": "New STRIDE diagram description",
+        "placeholder": "STRIDE-based threat model for Capitec's login and transaction system",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.4.1",
-        "cells": []
+        "cells": [
+          {
+            "id": "ca3d4d04-812d-46c5-8c2f-ddffd6b4511f",
+            "type": "tm.ExternalActor",
+            "z": 1,
+            "position": {
+              "x": 50,
+              "y": 150
+            },
+            "size": {
+              "width": 100,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "User"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "70fe28e4-e67e-4266-b3d5-03bf825ea686",
+            "type": "tm.Process",
+            "z": 1,
+            "position": {
+              "x": 200,
+              "y": 150
+            },
+            "size": {
+              "width": 100,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Login Page"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "42a9ecc0-b5c7-47ab-b8e8-97d92b132850",
+            "type": "tm.Process",
+            "z": 1,
+            "position": {
+              "x": 350,
+              "y": 150
+            },
+            "size": {
+              "width": 100,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Authentication Service"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "3c2616dd-46e5-4119-b705-fb1587a66c61",
+            "type": "tm.DataStore",
+            "z": 1,
+            "position": {
+              "x": 500,
+              "y": 100
+            },
+            "size": {
+              "width": 100,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "User Database"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "e6998082-605d-45f7-8c74-c94458a94377",
+            "type": "tm.Process",
+            "z": 1,
+            "position": {
+              "x": 350,
+              "y": 300
+            },
+            "size": {
+              "width": 100,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Web App Backend"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "1014859d-b09a-4985-886a-60d1b026f6b7",
+            "type": "tm.Process",
+            "z": 1,
+            "position": {
+              "x": 500,
+              "y": 300
+            },
+            "size": {
+              "width": 100,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "API Gateway"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "5db4a6cc-334c-4555-ba48-2034bdcba618",
+            "type": "tm.ExternalActor",
+            "z": 1,
+            "position": {
+              "x": 650,
+              "y": 300
+            },
+            "size": {
+              "width": 100,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Payment Gateway"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "3b7c0598-e6a0-4240-a81d-ef07da7ddbeb",
+            "type": "tm.Process",
+            "z": 1,
+            "position": {
+              "x": 350,
+              "y": 450
+            },
+            "size": {
+              "width": 100,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Admin Portal"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "31ec0f4e-5346-4e26-aff7-974d998a57a0",
+            "type": "tm.DataStore",
+            "z": 1,
+            "position": {
+              "x": 500,
+              "y": 450
+            },
+            "size": {
+              "width": 100,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Transaction Logs"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "3c3e455f-7f76-4125-bbe1-258670bdd000",
+            "type": "tm.Boundary",
+            "z": 0,
+            "position": {
+              "x": 190,
+              "y": 80
+            },
+            "size": {
+              "width": 480,
+              "height": 460
+            },
+            "attrs": {
+              "text": {
+                "text": "Internal Capitec Systems"
+              }
+            },
+            "parent": null
+          },
+          {
+            "id": "0863e9c6-7332-415b-97be-3fb3bc7189bc",
+            "type": "tm.Flow",
+            "z": 1,
+            "source": {
+              "id": "ca3d4d04-812d-46c5-8c2f-ddffd6b4511f"
+            },
+            "target": {
+              "id": "70fe28e4-e67e-4266-b3d5-03bf825ea686"
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "Enter credentials"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "594f12bd-c91d-4b1a-8114-6b33d2d8cf95",
+            "type": "tm.Flow",
+            "z": 1,
+            "source": {
+              "id": "70fe28e4-e67e-4266-b3d5-03bf825ea686"
+            },
+            "target": {
+              "id": "42a9ecc0-b5c7-47ab-b8e8-97d92b132850"
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "Send login request"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "9b05645e-6b54-46e4-820e-db7ae6e74185",
+            "type": "tm.Flow",
+            "z": 1,
+            "source": {
+              "id": "42a9ecc0-b5c7-47ab-b8e8-97d92b132850"
+            },
+            "target": {
+              "id": "3c2616dd-46e5-4119-b705-fb1587a66c61"
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "Verify credentials"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "0388457b-8598-431e-9e90-fffe983022a5",
+            "type": "tm.Flow",
+            "z": 1,
+            "source": {
+              "id": "42a9ecc0-b5c7-47ab-b8e8-97d92b132850"
+            },
+            "target": {
+              "id": "e6998082-605d-45f7-8c74-c94458a94377"
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "Create session"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "ab6cd806-6300-4b66-ace3-9f6230a1565d",
+            "type": "tm.Flow",
+            "z": 1,
+            "source": {
+              "id": "e6998082-605d-45f7-8c74-c94458a94377"
+            },
+            "target": {
+              "id": "1014859d-b09a-4985-886a-60d1b026f6b7"
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "Initiate transaction"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "21d2eef2-46b3-4cf8-a697-ea162bb6d497",
+            "type": "tm.Flow",
+            "z": 1,
+            "source": {
+              "id": "1014859d-b09a-4985-886a-60d1b026f6b7"
+            },
+            "target": {
+              "id": "5db4a6cc-334c-4555-ba48-2034bdcba618"
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "Send payment info"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "3ef6b463-ac9f-4d81-ab93-1b70021d61cf",
+            "type": "tm.Flow",
+            "z": 1,
+            "source": {
+              "id": "e6998082-605d-45f7-8c74-c94458a94377"
+            },
+            "target": {
+              "id": "3c2616dd-46e5-4119-b705-fb1587a66c61"
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "Update balance"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "be806c56-cb66-4afb-a540-789ee33601eb",
+            "type": "tm.Flow",
+            "z": 1,
+            "source": {
+              "id": "3b7c0598-e6a0-4240-a81d-ef07da7ddbeb"
+            },
+            "target": {
+              "id": "31ec0f4e-5346-4e26-aff7-974d998a57a0"
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "View logs"
+                  }
+                }
+              }
+            ]
+          }
+        ]
       }
     ],
     "diagramTop": 1,
-    "reviewer": "eduvos",
+    "reviewer": "Eduvos",
     "threatTop": 0
   }
 }
